@@ -1,0 +1,4 @@
+source_id,state,court_or_portal,document_category,language_availability,access_url,terms_reviewed,permission_status,notes
+TSHC-001,Telangana,High Court for the State of Telangana,Judgment,"Telugu, English",https://tshc.gov.in/,reviewed,approved,"Official Telangana High Court portal; verified reachable and suitable for pilot review."
+TSHC-002,Telangana,High Court case status portal,Order,"Telugu, English",https://csis.tshc.gov.in/,reviewed,approved,"Public-facing order/status portal; suitable for low-risk pilot metadata and sample discovery."
+TSHC-003,Telangana,High Court cause list portal,Cause List,"Telugu, English",https://causelist.tshc.gov.in/,reviewed,approved,"Public court list; useful for cross-checking document availability and court metadata."

@@ -1,0 +1,4 @@
+document_id,page_number,language,ocr_engine,ocr_status,cer_estimate,notes
+TLDC-TS-HYD-2025-000001,1,Telugu,Tesseract tel,review,0.18,"Mostly searchable; light OCR review needed for Telugu diacritics."
+TLDC-TS-HYD-2025-000002,1,Mixed,Tesseract tel,review,0.27,"Mixed-language pages require manual validation for legal names and case references."
+TLDC-TS-WAR-2025-000003,1,English,Tesseract eng,accepted,0.04,"English order extracts cleanly with low OCR error rate."

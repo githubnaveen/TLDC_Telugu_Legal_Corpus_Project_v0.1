@@ -44,5 +44,16 @@ def validate_source_inventory(csv_path):
     return df
 
 
+def select_approved_sources(csv_path, output_path=None):
+    """Return and optionally save the approved source list."""
+    df = validate_source_inventory(csv_path)
+    approved = df[df["permission_status"].astype(str).str.lower().eq("approved")].copy()
+    if output_path is not None:
+        output_path = Path(output_path)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        approved.to_csv(output_path, index=False)
+    return approved
+
+
 if __name__ == "__main__":
     validate_source_inventory("metadata/source_inventory.csv")
