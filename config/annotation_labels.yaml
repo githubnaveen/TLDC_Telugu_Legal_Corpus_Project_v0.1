@@ -1,0 +1,10 @@
+labels:
+  CASE_FACTS: Facts stated in the case.
+  PETITIONER_ARGUMENTS: Applicant or petitioner arguments.
+  RESPONDENT_ARGUMENTS: Opposing-party arguments.
+  LEGAL_PROVISIONS: Acts, sections, rules and provisions.
+  EVIDENCE: Evidence and witness references.
+  JUDICIAL_REASONING: Judicial observations and reasoning.
+  FINAL_ORDER: Operative portion of the order.
+  OUTCOME: Explicit decision classification.
+outcome_values: [GRANTED, REJECTED, PARTLY_GRANTED, OTHER, UNKNOWN, AMBIGUOUS]

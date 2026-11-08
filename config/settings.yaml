@@ -1,0 +1,19 @@
+project:
+  name: TLDC
+  version: "0.1"
+  states: [Telangana, Andhra Pradesh]
+  languages: [Telugu, English, Mixed]
+extraction:
+  minimum_text_characters_for_digital_page: 30
+  preserve_page_boundaries: true
+  unicode_normalisation: NFC
+privacy:
+  automatic_anonymisation_enabled: false
+  require_human_review: true
+  original_documents_restricted: true
+splits:
+  train: 0.70
+  validation: 0.15
+  test: 0.15
+  group_by: case_group_id
+  random_seed: 42

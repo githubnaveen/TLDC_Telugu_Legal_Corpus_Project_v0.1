@@ -1,0 +1,2 @@
+# Ethics and privacy
+This repository is a research scaffold, not legal advice. Obtain institutional ethics guidance; review court-specific restrictions and source terms; assess applicable Indian data-protection law and commencement provisions; identify direct and indirect identifiers; restrict originals; document access, retention, incident response and deletion; obtain permission where required. The privacy review queue does not automatically detect, redact or certify personal information.

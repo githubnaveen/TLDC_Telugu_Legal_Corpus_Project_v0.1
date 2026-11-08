@@ -1,0 +1,1 @@
+PyMuPDF>=1.24\npandas>=2.2\nnumpy>=1.26\nPyYAML>=6.0\nscikit-learn>=1.5\npytest>=8.0\n
