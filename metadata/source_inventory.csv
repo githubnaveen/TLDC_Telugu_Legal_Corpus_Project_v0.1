@@ -1,0 +1,8 @@
+source_id,state,court_or_portal,document_category,language_availability,access_url,terms_reviewed,permission_status,notes
+TSHC-001,Telangana,High Court for the State of Telangana,official portal,"Telugu, English",https://tshc.gov.in/,pending,confirmed_public_access,"Verified reachable official portal. Use for portal-level review and source identification."
+TSHC-002,Telangana,High Court case status portal,case status,"Telugu, English",https://csis.tshc.gov.in/,pending,confirmed_public_access,"Official status portal for court records and public-facing case metadata."
+TSHC-003,Telangana,High Court cause list portal,cause list,"Telugu, English",https://causelist.tshc.gov.in/,pending,confirmed_public_access,"Official cause list portal; useful for public document discovery and sampling."
+TSHC-004,Telangana,District Judiciary portal,district judiciary,"Telugu, English",https://tshc.gov.in/showChildDocTypes?id=17,pending,confirmed_public_access,"District judiciary landing page referenced from official Telangana High Court portal."
+APHC-001,Andhra Pradesh,High Court – candidate official portal,official portal,"Telugu, English",https://hc.ap.nic.in/,pending,pending_verification,"Domain did not resolve during current environment checks; confirm by institutional review before collection."
+APHC-002,Andhra Pradesh,High Court – candidate official portal,official portal,"Telugu, English",https://hc.ap.gov.in/,pending,pending_verification,"Candidate official portal requires confirmation before use."
+APHC-003,Andhra Pradesh,Official e-courts portal,court services,"Telugu, English",https://e-courts.ap.gov.in/,pending,pending_verification,"Candidate e-courts domain requires verification before sample collection."
