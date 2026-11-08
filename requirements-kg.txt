@@ -1,0 +1,4 @@
+# Optional Week 7 knowledge-graph stack; not required for the core corpus pipeline.
+rdflib>=7.0
+pyshacl>=0.25
+PyYAML>=6.0

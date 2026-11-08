@@ -1,0 +1,63 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix tldc: <https://tldc.example.org/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ tldc:LegalDocumentShape a sh:NodeShape ;
+    sh:targetClass tldc:LegalDocument ;
+    sh:property [ sh:path tldc:documentId ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path tldc:documentLanguage ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path tldc:documentType ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path tldc:belongsToCase ; sh:class tldc:Case ] ;
+    sh:property [ sh:path tldc:referencesAct ; sh:class tldc:LegalAct ] ;
+    sh:property [ sh:path tldc:referencesSection ; sh:class tldc:LegalSection ] ;
+    sh:property [ sh:path tldc:resultsInDecision ; sh:class tldc:Decision ] ;
+    sh:property [ sh:path tldc:hasSection ; sh:class tldc:DocumentSection ] .
+
+tldc:CaseShape a sh:NodeShape ;
+    sh:targetClass tldc:Case ;
+    sh:property [ sh:path tldc:caseId ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path tldc:hasDocument ; sh:class tldc:LegalDocument ] ;
+    sh:property [ sh:path tldc:heardByCourt ; sh:class tldc:Court ] .
+
+tldc:CourtShape a sh:NodeShape ;
+    sh:targetClass tldc:Court ;
+    sh:property [ sh:path tldc:courtName ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path tldc:jurisdiction ; sh:minCount 1 ; sh:datatype xsd:string ] .
+
+tldc:DocumentSectionShape a sh:NodeShape ;
+    sh:targetClass tldc:DocumentSection ;
+    sh:property [ sh:path tldc:sourceDocument ; sh:minCount 1 ; sh:class tldc:LegalDocument ] ;
+    sh:property [ sh:path tldc:sourcePage ; sh:minCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ] ;
+    sh:property [ sh:path tldc:sectionType ; sh:minCount 1 ] ;
+    sh:property [ sh:path tldc:sectionText ; sh:minCount 1 ] .
+
+tldc:LegalActShape a sh:NodeShape ;
+    sh:targetClass tldc:LegalAct ;
+    sh:property [ sh:path tldc:actName ; sh:minCount 1 ; sh:datatype xsd:string ] .
+
+tldc:EvidenceShape a sh:NodeShape ;
+    sh:targetClass tldc:Evidence ;
+    sh:property [ sh:path tldc:sourceDocument ; sh:minCount 1 ; sh:class tldc:LegalDocument ] ;
+    sh:property [ sh:path tldc:sourcePage ; sh:minCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ] .
+
+tldc:LegalSectionShape a sh:NodeShape ;
+    sh:targetClass tldc:LegalSection ;
+    sh:property [ sh:path tldc:sectionIdentifier ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path tldc:parentAct ; sh:minCount 1 ; sh:class tldc:LegalAct ] ;
+    sh:property [ sh:path tldc:referenceVerificationStatus ; sh:minCount 1 ; sh:in ( "MENTIONED_UNVERIFIED" "VERIFIED" "REJECTED" ) ] ;
+    sh:property [ sh:path tldc:sourceDocument ; sh:minCount 1 ; sh:class tldc:LegalDocument ] ;
+    sh:property [ sh:path tldc:sourcePage ; sh:minCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ] .
+
+tldc:DecisionShape a sh:NodeShape ;
+    sh:targetClass tldc:Decision ;
+    sh:property [ sh:path tldc:outcomeStatus ; sh:minCount 1 ; sh:in ( "GRANTED" "REJECTED" "PARTLY_GRANTED" "UNKNOWN" "AMBIGUOUS" ) ] ;
+    sh:property [ sh:path tldc:sourceDocument ; sh:minCount 1 ; sh:class tldc:LegalDocument ] ;
+    sh:property [ sh:path tldc:sourcePage ; sh:minCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ] ;
+    sh:property [ sh:path tldc:sourceSection ; sh:minCount 1 ; sh:class tldc:DocumentSection ] .
+
+tldc:ProvenanceAssertionShape a sh:NodeShape ;
+    sh:targetClass tldc:ProvenanceAssertion ;
+    sh:property [ sh:path tldc:assertionSubject ; sh:minCount 1 ] ;
+    sh:property [ sh:path tldc:assertionPredicate ; sh:minCount 1 ] ;
+    sh:property [ sh:path tldc:assertionObject ; sh:minCount 1 ] ;
+    sh:property [ sh:path tldc:sourceDocument ; sh:minCount 1 ; sh:class tldc:LegalDocument ] .

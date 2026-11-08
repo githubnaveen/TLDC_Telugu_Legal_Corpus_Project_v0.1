@@ -1,0 +1,21 @@
+PREFIX tldc: <https://tldc.example.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# EXP-13/14: Cases and documents referencing a requested section.
+SELECT ?case ?document ?section ?identifier WHERE {
+  ?document a tldc:LegalDocument ; tldc:belongsToCase ?case ; tldc:referencesSection ?section .
+  ?section tldc:sectionIdentifier ?identifier .
+  FILTER (?identifier = "302")
+}
+
+# Documents belonging to a court through their case.
+SELECT ?document ?case ?court ?courtName WHERE {
+  ?case a tldc:Case ; tldc:hasDocument ?document ; tldc:heardByCourt ?court .
+  ?court tldc:courtName ?courtName .
+}
+
+# Only explicitly curated evidence-support relations are returned; the builder does not infer these.
+SELECT ?observation ?evidence ?page WHERE {
+  ?observation a tldc:JudicialObservation ; tldc:supportedByEvidence ?evidence .
+  ?evidence tldc:sourcePage ?page .
+}

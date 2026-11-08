@@ -1,0 +1,33 @@
+LegalDocument:
+  label_en: Legal document
+  label_te: న్యాయ పత్రం
+Case:
+  label_en: Case
+  label_te: కేసు
+Court:
+  label_en: Court
+  label_te: న్యాయస్థానం
+Party:
+  label_en: Party role
+  label_te: పక్షం
+Judge:
+  label_en: Judge role
+  label_te: న్యాయమూర్తి
+LegalAct:
+  label_en: Legal Act
+  label_te: చట్టం
+LegalSection:
+  label_en: Legal section reference
+  label_te: చట్టంలోని విభాగం
+Evidence:
+  label_en: Evidence passage
+  label_te: సాక్ష్యం
+LegalArgument:
+  label_en: Legal argument
+  label_te: న్యాయ వాదన
+JudicialObservation:
+  label_en: Judicial observation
+  label_te: న్యాయస్థాన పరిశీలన
+Decision:
+  label_en: Decision
+  label_te: నిర్ణయం

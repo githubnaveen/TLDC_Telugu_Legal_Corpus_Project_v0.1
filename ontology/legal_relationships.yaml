@@ -1,0 +1,58 @@
+relationships:
+  hasDocument:
+    domain: Case
+    range: LegalDocument
+    asserted_from: case_group_id
+    provenance_required: true
+  belongsToCase:
+    domain: LegalDocument
+    range: Case
+    asserted_from: case_group_id
+    provenance_required: true
+  heardByCourt:
+    domain: Case
+    range: Court
+    asserted_from: registered_court_name
+    provenance_required: true
+  presidedBy:
+    domain: Case
+    range: Judge
+    asserted_from: explicitly_annotated_judge_role
+    provenance_required: true
+    automatic_extraction: false
+  referencesAct:
+    domain: LegalDocument
+    range: LegalAct
+    asserted_from: approved_statutory_reference
+    provenance_required: true
+  referencesSection:
+    domain: LegalDocument
+    range: LegalSection
+    asserted_from: approved_statutory_reference
+    provenance_required: true
+  containsEvidence:
+    domain: LegalDocument
+    range: Evidence
+    asserted_from: approved_section_annotation
+    provenance_required: true
+  containsArgument:
+    domain: LegalDocument
+    range: LegalArgument
+    asserted_from: approved_section_annotation
+    provenance_required: true
+  containsObservation:
+    domain: LegalDocument
+    range: JudicialObservation
+    asserted_from: approved_section_annotation
+    provenance_required: true
+  resultsInDecision:
+    domain: LegalDocument
+    range: Decision
+    asserted_from: explicit_approved_decision_and_source_passage
+    provenance_required: true
+  supportedByEvidence:
+    domain: JudicialObservation
+    range: Evidence
+    asserted_from: explicit_human_adjudication_only
+    provenance_required: true
+    automatic_extraction: false

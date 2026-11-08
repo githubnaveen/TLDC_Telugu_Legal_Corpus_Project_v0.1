@@ -36,5 +36,26 @@ A reproducible research scaffold for a provenance-aware, privacy-reviewed Telugu
 - Keep documents from the same case in one data split.
 - Corpus updates do not automatically trigger model retraining.
 
+## Week 5 baselines
+Prepare reviewed model-ready partitions with `python -m src.training.prepare_datasets`. The builder excludes unresolved annotations, records without privacy clearance, missing case-group IDs, and NER entities without exact normalized-text offsets. It writes `data/train/tldc_train.jsonl`, `data/validation/tldc_validation.jsonl`, and `data/test/tldc_test.jsonl` using a deterministic case-group split.
+
+Run the classical baselines after eligible data is available:
+
+```powershell
+python -m src.training.document_classification_baseline --model-output models/classical_ml/document_classifier.joblib
+python -m src.training.legal_section_classifier
+python -m src.training.legal_ner_baseline
+```
+
+The transformer experiment notebook is `notebooks/04_transformer_experiments.ipynb`. Transformer dependencies and model downloads are optional and intentionally not part of the default install.
+
+## Week 6 explainability
+Week 6 adds optional SHAP, LIME, token-occlusion and Integrated Gradients adapters, exact section/page evidence linking, reviewer audit records and explanation sensitivity metrics. Core dependencies remain unchanged; install optional packages with `pip install -r requirements-xai.txt`. The SHAP/LIME/transformer notebooks are opt-in and require a saved model plus approved reviewed data. The evidence schema is `schemas/evidence_attribution.schema.json`; no explanation values are prefilled as real results.
+
+After preparing approved splits and saving a classifier, generate explanations from the held-out test partition with `python -m src.explainability.prototype --model-version tldc_baseline_v1`. Review outcomes can be recorded with `src.explainability.review.record_human_review` and stored through the review CSV workflow.
+
+## Week 7 knowledge graph
+Install the optional graph stack with `pip install -r requirements-kg.txt`. Build the graph and registries with `python -m src.graph.graph_builder`, then run SHACL with `python -m src.verification.shacl_validator`. The builder excludes unapproved or privacy-unreviewed annotations; statutory references require page-matched source text, and multilingual Act aliases are merged only when marked `VERIFIED` in `metadata/legal_reference_aliases.csv`.
+
 ## Not yet implemented
 Official-source collection, permissions review, Telugu OCR execution/benchmarking, Telugu-English NER, automatic anonymisation, legal expert annotation, legal knowledge graph, model training and PhD experiments.

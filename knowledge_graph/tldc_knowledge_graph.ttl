@@ -1,0 +1,3 @@
+@prefix tldc: <https://tldc.example.org/ontology#> .
+@prefix tldcr: <https://tldc.example.org/resource/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .

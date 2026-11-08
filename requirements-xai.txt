@@ -1,0 +1,6 @@
+# Optional Week 6 explanation methods; not required for the core pipeline.
+shap>=0.46
+lime>=0.2.0.1
+captum>=0.7
+transformers>=4.40
+torch>=2.2

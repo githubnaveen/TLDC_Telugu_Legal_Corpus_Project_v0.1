@@ -1,0 +1,68 @@
+@prefix tldc: <https://tldc.example.org/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# OWL 2 ontology serialized as Turtle. The namespace is a project placeholder.
+tldc: a owl:Ontology ;
+    rdfs:label "Telugu Legal Domain Ontology (TLDC) v1"@en ;
+    rdfs:comment "Corpus-local concepts and provenance vocabulary; this ontology does not assert legal correctness."@en .
+
+tldc:LegalDocument a owl:Class ; rdfs:label "Legal document"@en ; rdfs:label "న్యాయ పత్రం"@te .
+tldc:Case a owl:Class ; rdfs:label "Case"@en ; rdfs:label "కేసు"@te .
+tldc:Court a owl:Class ; rdfs:label "Court"@en ; rdfs:label "న్యాయస్థానం"@te .
+tldc:Party a owl:Class ; rdfs:label "Party role"@en ; rdfs:label "పక్షం"@te .
+tldc:Judge a owl:Class ; rdfs:label "Judge role"@en ; rdfs:label "న్యాయమూర్తి"@te .
+tldc:LegalAct a owl:Class ; rdfs:label "Legal Act"@en ; rdfs:label "చట్టం"@te .
+tldc:LegalSection a owl:Class ; rdfs:label "Legal section reference"@en ; rdfs:label "చట్టంలోని విభాగం"@te .
+tldc:DocumentSection a owl:Class ; rdfs:label "Document section"@en .
+tldc:Fact a owl:Class ; rdfs:subClassOf tldc:DocumentSection ; rdfs:label "Fact passage"@en .
+tldc:Evidence a owl:Class ; rdfs:subClassOf tldc:DocumentSection ; rdfs:label "Evidence passage"@en .
+tldc:LegalArgument a owl:Class ; rdfs:subClassOf tldc:DocumentSection ; rdfs:label "Legal argument"@en .
+tldc:JudicialObservation a owl:Class ; rdfs:subClassOf tldc:DocumentSection ; rdfs:label "Judicial observation"@en .
+tldc:Decision a owl:Class ; rdfs:label "Decision"@en ; rdfs:label "నిర్ణయం"@te .
+tldc:LegalProvisionPassage a owl:Class ; rdfs:subClassOf tldc:DocumentSection ; rdfs:label "Legal provision passage"@en .
+tldc:DecisionPassage a owl:Class ; rdfs:subClassOf tldc:DocumentSection ; rdfs:label "Decision passage"@en .
+tldc:ProvenanceAssertion a owl:Class ; rdfs:label "Provenance assertion"@en .
+
+tldc:hasSection a owl:ObjectProperty ; rdfs:domain tldc:LegalDocument ; rdfs:range tldc:DocumentSection .
+tldc:hasDocument a owl:ObjectProperty ; rdfs:domain tldc:Case ; rdfs:range tldc:LegalDocument ; owl:inverseOf tldc:belongsToCase .
+tldc:belongsToCase a owl:ObjectProperty ; rdfs:domain tldc:LegalDocument ; rdfs:range tldc:Case .
+tldc:heardByCourt a owl:ObjectProperty ; rdfs:domain tldc:Case ; rdfs:range tldc:Court .
+tldc:presidedBy a owl:ObjectProperty ; rdfs:domain tldc:Case ; rdfs:range tldc:Judge .
+tldc:referencesAct a owl:ObjectProperty ; rdfs:domain tldc:LegalDocument ; rdfs:range tldc:LegalAct .
+tldc:referencesSection a owl:ObjectProperty ; rdfs:domain tldc:LegalDocument ; rdfs:range tldc:LegalSection .
+tldc:parentAct a owl:ObjectProperty ; rdfs:domain tldc:LegalSection ; rdfs:range tldc:LegalAct .
+tldc:containsEvidence a owl:ObjectProperty ; rdfs:domain tldc:LegalDocument ; rdfs:range tldc:Evidence .
+tldc:containsArgument a owl:ObjectProperty ; rdfs:domain tldc:LegalDocument ; rdfs:range tldc:LegalArgument .
+tldc:containsObservation a owl:ObjectProperty ; rdfs:domain tldc:LegalDocument ; rdfs:range tldc:JudicialObservation .
+tldc:resultsInDecision a owl:ObjectProperty ; rdfs:domain tldc:LegalDocument ; rdfs:range tldc:Decision .
+tldc:supportedByEvidence a owl:ObjectProperty ; rdfs:domain tldc:JudicialObservation ; rdfs:range tldc:Evidence ; rdfs:comment "Assert only when an explicit annotation establishes support; never infer automatically."@en .
+tldc:sourceDocument a owl:ObjectProperty ; rdfs:range tldc:LegalDocument .
+tldc:sourceSection a owl:ObjectProperty ; rdfs:range tldc:DocumentSection .
+tldc:assertionSubject a owl:ObjectProperty ; rdfs:domain tldc:ProvenanceAssertion .
+tldc:assertionPredicate a owl:ObjectProperty ; rdfs:domain tldc:ProvenanceAssertion .
+tldc:assertionObject a rdf:Property ; rdfs:domain tldc:ProvenanceAssertion .
+
+tldc:documentId a owl:DatatypeProperty ; rdfs:domain tldc:LegalDocument ; rdfs:range xsd:string .
+tldc:documentLanguage a owl:DatatypeProperty ; rdfs:domain tldc:LegalDocument ; rdfs:range xsd:string .
+tldc:documentType a owl:DatatypeProperty ; rdfs:domain tldc:LegalDocument ; rdfs:range xsd:string .
+tldc:caseId a owl:DatatypeProperty ; rdfs:domain tldc:Case ; rdfs:range xsd:string .
+tldc:caseCategory a owl:DatatypeProperty ; rdfs:domain tldc:Case ; rdfs:range xsd:string .
+tldc:actName a owl:DatatypeProperty ; rdfs:domain tldc:LegalAct ; rdfs:range xsd:string .
+tldc:canonicalActId a owl:DatatypeProperty ; rdfs:domain tldc:LegalAct ; rdfs:range xsd:string .
+tldc:courtName a owl:DatatypeProperty ; rdfs:domain tldc:Court ; rdfs:range xsd:string .
+tldc:courtLevel a owl:DatatypeProperty ; rdfs:domain tldc:Court ; rdfs:range xsd:string .
+tldc:jurisdiction a owl:DatatypeProperty ; rdfs:domain tldc:Court ; rdfs:range xsd:string .
+tldc:state a owl:DatatypeProperty ; rdfs:range xsd:string .
+tldc:district a owl:DatatypeProperty ; rdfs:range xsd:string .
+tldc:sectionIdentifier a owl:DatatypeProperty ; rdfs:domain tldc:LegalSection ; rdfs:range xsd:string .
+tldc:outcomeStatus a owl:DatatypeProperty ; rdfs:domain tldc:Decision ; rdfs:range xsd:string .
+tldc:sectionType a owl:DatatypeProperty ; rdfs:domain tldc:DocumentSection ; rdfs:range xsd:string .
+tldc:sectionText a owl:DatatypeProperty ; rdfs:domain tldc:DocumentSection ; rdfs:range xsd:string .
+tldc:sourcePage a owl:DatatypeProperty ; rdfs:range xsd:integer .
+tldc:sourceText a owl:DatatypeProperty ; rdfs:range xsd:string .
+tldc:sourceUrl a owl:DatatypeProperty ; rdfs:range xsd:anyURI .
+tldc:referenceVerificationStatus a owl:DatatypeProperty ; rdfs:domain tldc:LegalSection ; rdfs:range xsd:string .
+tldc:assertionStatus a owl:DatatypeProperty ; rdfs:domain tldc:ProvenanceAssertion ; rdfs:range xsd:string .

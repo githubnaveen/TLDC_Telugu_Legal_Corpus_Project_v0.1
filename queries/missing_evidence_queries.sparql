@@ -1,0 +1,26 @@
+PREFIX tldc: <https://tldc.example.org/ontology#>
+
+# Documents whose case has no extracted statutory section reference.
+SELECT ?case ?document WHERE {
+  ?case a tldc:Case ; tldc:hasDocument ?document .
+  FILTER NOT EXISTS { ?document tldc:referencesSection ?section }
+}
+
+# Decisions with no source section or page provenance.
+SELECT ?document ?decision WHERE {
+  {
+    ?document tldc:resultsInDecision ?decision .
+    FILTER NOT EXISTS { ?decision tldc:sourceSection ?passage }
+  }
+  UNION
+  {
+    ?document tldc:resultsInDecision ?decision .
+    FILTER NOT EXISTS { ?decision tldc:sourcePage ?page }
+  }
+}
+
+# Provenance assertions without a source document.
+SELECT ?assertion WHERE {
+  ?assertion a tldc:ProvenanceAssertion .
+  FILTER NOT EXISTS { ?assertion tldc:sourceDocument ?source }
+}

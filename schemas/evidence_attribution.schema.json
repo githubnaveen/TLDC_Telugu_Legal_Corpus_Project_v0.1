@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TLDC evidence-linked explanation",
+  "type": "object",
+  "required": ["schema_version", "document_id", "prediction", "explanation", "evidence", "legal_references", "human_review"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "document_id": {"type": "string"},
+    "prediction": {
+      "type": "object",
+      "required": ["task", "predicted_label", "model_version"],
+      "properties": {
+        "task": {"type": "string"},
+        "predicted_label": {"type": "string"},
+        "model_version": {"type": "string"},
+        "score": {"type": ["number", "null"]},
+        "score_is_calibrated_probability": {"type": "boolean"}
+      }
+    },
+    "explanation": {
+      "type": "object",
+      "required": ["method", "important_segments"],
+      "properties": {
+        "method": {"type": "string"},
+        "important_segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["segment_id", "page_number", "section_type", "text", "attribution_score"],
+            "properties": {
+              "segment_id": {"type": ["string", "null"]},
+              "page_number": {"type": ["integer", "null"]},
+              "section_type": {"type": ["string", "null"]},
+              "text": {"type": "string"},
+              "char_start": {"type": "integer"},
+              "char_end": {"type": "integer"},
+              "attribution_score": {"type": "number"}
+            }
+          }
+        },
+        "warnings": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "evidence": {"type": "array", "items": {"type": "object"}},
+    "legal_references": {"type": "array", "items": {"type": "object"}},
+    "human_review": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["PENDING", "ACCEPTED", "REJECTED", "FLAGGED"]},
+        "reviewer_id": {"type": ["string", "null"]},
+        "reviewer_comment": {"type": ["string", "null"]},
+        "reviewed_at": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
