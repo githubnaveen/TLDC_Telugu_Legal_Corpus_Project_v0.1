@@ -1,6 +1,8 @@
 ALLOWED_LABELS = {
     "CASE_FACTS", "PETITIONER_ARGUMENTS", "RESPONDENT_ARGUMENTS",
-    "LEGAL_PROVISIONS", "EVIDENCE", "JUDICIAL_REASONING", "FINAL_ORDER", "OUTCOME"
+    "LEGAL_PROVISIONS", "EVIDENCE", "JUDICIAL_REASONING", "FINAL_ORDER", "OUTCOME",
+    "HEADER", "FACTS", "PETITIONER_ARGUMENT", "RESPONDENT_ARGUMENT",
+    "JUDICIAL_OBSERVATION", "DECISION", "LEGAL_ENTITY", "CASE_NUMBER", "SECTION"
 }
 
 def validate_annotation(annotation: dict, page_text: str) -> list[str]:
@@ -21,4 +23,32 @@ def validate_annotation(annotation: dict, page_text: str) -> list[str]:
             errors.append("source_text does not match the referenced page span")
     except (KeyError, TypeError, ValueError):
         errors.append("Character offsets must be valid integers")
+    return errors
+
+
+def validate_section(section: dict) -> list[str]:
+    errors = []
+    required = ["section_id", "section_type", "text"]
+    for key in required:
+        if key not in section or section[key] in (None, ""):
+            errors.append(f"Missing required section field: {key}")
+    if "section_type" in section and section["section_type"] not in {
+        "HEADER", "FACTS", "PETITIONER_ARGUMENT", "RESPONDENT_ARGUMENT",
+        "LEGAL_PROVISIONS", "EVIDENCE", "JUDICIAL_OBSERVATION", "DECISION"
+    }:
+        errors.append("Unknown section label")
+    return errors
+
+
+def validate_document_record(record: dict) -> list[str]:
+    errors = []
+    required = ["document_id", "state", "document_language", "document_type", "sections"]
+    for key in required:
+        if key not in record or record[key] in (None, ""):
+            errors.append(f"Missing required field: {key}")
+    if isinstance(record.get("sections"), list):
+        for idx, section in enumerate(record["sections"], start=1):
+            section_errors = validate_section(section)
+            if section_errors:
+                errors.append(f"Section {idx}: {'; '.join(section_errors)}")
     return errors

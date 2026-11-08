@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TLDC annotation record schema",
+  "type": "object",
+  "required": ["document_id", "page_number", "source_text", "annotation_label", "annotator_id"],
+  "properties": {
+    "document_id": {"type": "string"},
+    "page_number": {"type": "integer"},
+    "start_character": {"type": "integer"},
+    "end_character": {"type": "integer"},
+    "source_text": {"type": "string"},
+    "annotation_label": {
+      "type": "string",
+      "enum": [
+        "CASE_FACTS",
+        "PETITIONER_ARGUMENTS",
+        "RESPONDENT_ARGUMENTS",
+        "LEGAL_PROVISIONS",
+        "EVIDENCE",
+        "JUDICIAL_REASONING",
+        "FINAL_ORDER",
+        "OUTCOME",
+        "HEADER",
+        "FACTS",
+        "PETITIONER_ARGUMENT",
+        "RESPONDENT_ARGUMENT",
+        "JUDICIAL_OBSERVATION",
+        "DECISION"
+      ]
+    },
+    "annotator_id": {"type": "string"},
+    "confidence": {"type": ["string", "null"]},
+    "review_status": {"type": ["string", "null"]}
+  }
+}

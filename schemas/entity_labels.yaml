@@ -1,0 +1,24 @@
+COURT:
+  description: Court name or jurisdiction
+CASE_NUMBER:
+  description: Case reference or docket number
+DATE:
+  description: Order or filing date
+LEGAL_ACT:
+  description: Statutory act or code name
+SECTION:
+  description: Section or subsection reference
+PETITIONER_ROLE:
+  description: Petitioner, applicant or complainant role
+RESPONDENT_ROLE:
+  description: Respondent or opposing party role
+JUDGE_ROLE:
+  description: Presiding judge or court officer
+WITNESS_ROLE:
+  description: Witness or evidence provider
+EVIDENCE:
+  description: Documentary or testimonial evidence
+LOCATION:
+  description: Court location or jurisdictional region
+CASE_TYPE:
+  description: Civil, criminal, bail, writ or other category

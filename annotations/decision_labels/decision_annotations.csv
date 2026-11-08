@@ -1,0 +1,3 @@
+document_id,case_type,decision_label,bail_amount,conditions,notes
+TLDC-TS-HYD-2025-000001,bail,GRANTED,,"probation for 30 days","Only annotated because order explicitly states bail granted."
+TLDC-TS-HYD-2025-000002,bail,REJECTED,,"none","Order explicitly rejects bail application."

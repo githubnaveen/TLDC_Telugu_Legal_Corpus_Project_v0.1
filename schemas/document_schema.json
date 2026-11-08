@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TLDC Document Annotation Schema",
+  "type": "object",
+  "required": ["document_id", "state", "document_language", "document_type", "sections"],
+  "properties": {
+    "document_id": {"type": "string"},
+    "state": {"type": "string"},
+    "document_language": {"type": "string", "enum": ["Telugu", "English", "Mixed"]},
+    "document_type": {"type": "string"},
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["section_id", "section_type", "text"],
+        "properties": {
+          "section_id": {"type": "string"},
+          "section_type": {
+            "type": "string",
+            "enum": [
+              "HEADER",
+              "FACTS",
+              "PETITIONER_ARGUMENT",
+              "RESPONDENT_ARGUMENT",
+              "LEGAL_PROVISIONS",
+              "EVIDENCE",
+              "JUDICIAL_OBSERVATION",
+              "DECISION"
+            ]
+          },
+          "text": {"type": "string"},
+          "page_number": {"type": ["integer", "null"]}
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "properties": {
+        "outcome": {"type": ["string", "null"]},
+        "bail_amount": {"type": ["number", "null"]},
+        "conditions": {"type": "array"},
+        "confidence": {"type": ["string", "null"]}
+      }
+    },
+    "annotation_status": {"type": "string"}
+  }
+}
