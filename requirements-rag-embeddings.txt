@@ -1,0 +1,2 @@
+# Optional local dense retrieval. Install only after selecting a model and reviewing its licence.
+sentence-transformers>=3.0

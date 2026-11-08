@@ -1,0 +1,10 @@
+{
+  "test_count": 3,
+  "attack_count": 2,
+  "clean_count": 1,
+  "attack_detection_rate": 1.0,
+  "attack_detection_miss_rate": 0.0,
+  "attack_success_rate": null,
+  "false_positive_rate": 0.0,
+  "limitations": "Static heuristic evaluation on controlled test strings only. Detector misses are not end-to-end attack success; attack success requires observing a defined policy violation in a configured generation system."
+}

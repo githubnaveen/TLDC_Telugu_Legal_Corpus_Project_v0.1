@@ -1,0 +1,1 @@
+answer_id,query_id,reviewer_id,reviewer_role,review_label,answer_correct,evidence_relevant,citations_correct,evidence_sufficient,unsupported_claims,abstention_appropriate,telugu_faithful,explanation_interpretable,reviewer_comment,reviewed_at

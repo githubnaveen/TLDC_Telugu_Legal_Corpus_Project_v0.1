@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TLDC adjudicated counterfactual pair",
+  "type": "object",
+  "required": ["pair_id", "changed_attribute", "changed_attribute_irrelevant", "legally_relevant_facts_preserved", "review_status", "original", "counterfactual"],
+  "properties": {
+    "pair_id": {"type": "string"},
+    "changed_attribute": {"type": "string"},
+    "changed_attribute_irrelevant": {"type": "boolean"},
+    "legally_relevant_facts_preserved": {"type": "boolean"},
+    "review_status": {"enum": ["PENDING", "ADJUDICATED"]},
+    "reviewer_id": {"type": ["string", "null"]},
+    "original": {"type": "object", "required": ["conclusion", "citations", "claims"]},
+    "counterfactual": {"type": "object", "required": ["conclusion", "citations", "claims"]}
+  }
+}

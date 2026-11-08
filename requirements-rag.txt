@@ -1,0 +1,3 @@
+# Core Week 8 sparse retrieval dependency.
+rank-bm25>=0.2.2
+rdflib>=7.0

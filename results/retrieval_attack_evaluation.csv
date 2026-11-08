@@ -1,0 +1,1 @@
+test_id,clean_relevant_recall_at_k,candidate_relevant_recall_at_k,recall_degradation,top_result_changed,duplicate_count,single_document_dominance

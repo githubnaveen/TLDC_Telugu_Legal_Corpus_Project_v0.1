@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TLDC RAG question and evidence evaluation record",
+  "type": "object",
+  "required": ["query_id", "question", "language", "answerable", "relevant_chunk_ids"],
+  "properties": {
+    "query_id": {"type": "string"},
+    "question": {"type": "string"},
+    "language": {"enum": ["Telugu", "English", "Mixed"]},
+    "answerable": {"type": "boolean"},
+    "relevant_chunk_ids": {"type": "array", "items": {"type": "string"}},
+    "filters": {"type": "object"},
+    "reference_answer": {"type": ["string", "null"]},
+    "review_status": {"enum": ["PENDING", "ADJUDICATED"]}
+  }
+}

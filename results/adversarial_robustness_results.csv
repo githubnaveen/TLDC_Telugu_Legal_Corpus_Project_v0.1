@@ -1,0 +1,2 @@
+attack_category,attempt_count,successful_attacks,attack_success_rate,detection_rate,false_positive_rate,robust_accuracy,notes
+PROMPT_INJECTION_STATIC_HEURISTIC_SYNTHETIC,2,,,1.0,0.0,,Synthetic detector-only fixture. End-to-end attack success and robust accuracy not measured; see limitations in prompt_injection_metrics.json.

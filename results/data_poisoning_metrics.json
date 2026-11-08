@@ -1,0 +1,9 @@
+{
+  "candidate_count": 0,
+  "changed_label_count": 0,
+  "hash_mismatch_count": 0,
+  "unregistered_document_count": 0,
+  "duplicate_hash_group_count": 0,
+  "duplicate_hash_groups": [],
+  "interpretation": "Controlled integrity comparison only. Checksums do not prove source authenticity; review all flagged records."
+}

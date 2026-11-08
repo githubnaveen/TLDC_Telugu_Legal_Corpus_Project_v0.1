@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TLDC labeled calibration prediction",
+  "type": "object",
+  "required": ["true_label", "probabilities", "class_labels"],
+  "properties": {
+    "true_label": {"type": ["string", "integer"]},
+    "probabilities": {"type": "array", "minItems": 2, "items": {"type": "number", "minimum": 0, "maximum": 1}},
+    "class_labels": {"type": "array", "minItems": 2, "items": {"type": "string"}},
+    "document_id": {"type": "string"},
+    "language": {"enum": ["Telugu", "English", "Mixed"]},
+    "state": {"enum": ["Telangana", "Andhra Pradesh"]}
+  }
+}

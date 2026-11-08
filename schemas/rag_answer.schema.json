@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TLDC grounded RAG answer",
+  "type": "object",
+  "required": ["answer_id", "query_id", "question", "answer", "claims", "limitations", "confidence", "status", "human_review_required"],
+  "properties": {
+    "answer_id": {"type": "string"},
+    "query_id": {"type": "string"},
+    "question": {"type": "string"},
+    "answer": {"type": "string"},
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim", "citations"],
+        "properties": {
+          "claim": {"type": "string"},
+          "citations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["chunk_id", "document_id", "page_number", "section_type", "evidence_text"],
+              "properties": {
+                "chunk_id": {"type": "string"},
+                "document_id": {"type": "string"},
+                "page_number": {"type": "integer"},
+                "section_type": {"type": "string"},
+                "evidence_text": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "confidence": {"const": "NOT_CALIBRATED"},
+    "status": {"enum": ["ABSTAINED", "ABSTAINED_UNSUPPORTED_CITATIONS", "UNVERIFIED", "CITATIONS_VALIDATED_REQUIRES_REVIEW"]},
+    "human_review_required": {"const": true}
+  }
+}

@@ -1,0 +1,4 @@
+test_id,attack_type,normalization_equivalent,perturbed_requires_review,invisible_format_characters,bidirectional_controls,top_k_jaccard,clean_recall_at_k,perturbed_recall_at_k,review_status
+SYN-UNI-001,clean_control,True,False,0,0,,,,SYNTHETIC_TEST_FIXTURE
+SYN-UNI-002,zero_width_insertion,False,True,1,0,,,,SYNTHETIC_TEST_FIXTURE
+SYN-UNI-003,bidi_control_insertion,False,True,0,1,,,,SYNTHETIC_TEST_FIXTURE

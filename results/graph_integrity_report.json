@@ -1,0 +1,13 @@
+{
+  "triple_count": 0,
+  "shacl_conforms": true,
+  "shacl_report": "Validation Report\nConforms: True\n",
+  "provenance_audit": {
+    "sourced_relationship_count": 0,
+    "relationships_with_document_page_assertion": 0,
+    "unprovenanced_assertion_count": 0,
+    "unprovenanced_relationships": [],
+    "interpretation": "Structural provenance audit only; does not validate factual truth or legal correctness."
+  },
+  "factual_truth_verified": false
+}

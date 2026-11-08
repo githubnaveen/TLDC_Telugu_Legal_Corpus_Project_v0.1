@@ -1,0 +1,3 @@
+{"test_id":"SYN-UNI-001","attack_type":"clean_control","clean_text":"సింథటిక్ పరీక్ష సెక్షన్ 302","perturbed_text":"సింథటిక్ పరీక్ష సెక్షన్ 302","expected_normalization_equivalent":true,"review_status":"SYNTHETIC_TEST_FIXTURE"}
+{"test_id":"SYN-UNI-002","attack_type":"zero_width_insertion","clean_text":"సింథటిక్ పరీక్ష సెక్షన్ 302","perturbed_text":"సింథటిక్\u200b పరీక్ష సెక్షన్ 302","expected_normalization_equivalent":true,"review_status":"SYNTHETIC_TEST_FIXTURE"}
+{"test_id":"SYN-UNI-003","attack_type":"bidi_control_insertion","clean_text":"synthetic section 302","perturbed_text":"synthetic\u202esection 302","expected_normalization_equivalent":false,"review_status":"SYNTHETIC_TEST_FIXTURE"}

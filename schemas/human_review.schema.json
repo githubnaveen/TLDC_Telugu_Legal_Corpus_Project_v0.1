@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TLDC legal AI human review",
+  "type": "object",
+  "required": ["answer_id", "reviewer_id", "review_label", "reviewer_comment", "reviewed_at"],
+  "properties": {
+    "answer_id": {"type": "string"},
+    "query_id": {"type": "string"},
+    "reviewer_id": {"type": "string"},
+    "reviewer_role": {"type": "string"},
+    "review_label": {"enum": ["ACCEPTED", "ACCEPTED_WITH_CORRECTION", "REJECTED", "INSUFFICIENT_EVIDENCE", "INCORRECT_CITATION", "UNSUPPORTED_CLAIM", "LEGAL_EXPERT_REVIEW_REQUIRED"]},
+    "reviewer_comment": {"type": "string"},
+    "reviewed_at": {"type": "string"},
+    "review_status": {"const": "COMPLETED"}
+  }
+}
